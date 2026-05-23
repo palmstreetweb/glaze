@@ -1,12 +1,8 @@
 import { ImageResponse } from "next/og";
 import { business } from "@/lib/business";
 
-export const alt = business.name;
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
+export const alt = `${business.name} — ${business.tagline}`;
+export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
@@ -16,64 +12,75 @@ export default async function Image() {
     (
       <div
         style={{
-          background: bg,
           width: "100%",
           height: "100%",
-          display: "flex",
-          flexDirection: "row",
+          background: bg,
+          color: ink,
           fontFamily: "sans-serif",
+          display: "flex",
+          alignItems: "center",
+          padding: 64,
+          gap: 56,
+          position: "relative",
+          overflow: "hidden",
         }}
       >
         <div
           style={{
-            width: "40%",
+            width: 420,
+            height: 480,
             background: accent,
+            borderRadius: "45% 55% 60% 40% / 60% 40% 60% 40%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             color: onAccent,
-            fontSize: 200,
-            fontWeight: "bold",
-            letterSpacing: "-0.05em",
+            fontFamily: "serif",
+            fontSize: 320,
+            fontStyle: "italic",
+            fontWeight: 700,
+            flexShrink: 0,
           }}
         >
-          {business.name.charAt(0) || "S"}
+          g
         </div>
-        <div
-          style={{
-            width: "60%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: "60px",
-            color: ink,
-          }}
-        >
+        <div style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "center", gap: 32 }}>
           <div
             style={{
-              fontSize: 28,
-              fontWeight: "bold",
-              letterSpacing: "0.18em",
+              fontFamily: "monospace",
+              fontSize: 20,
+              letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: accent,
-              marginBottom: 24,
+              display: "flex",
             }}
           >
-            {business.name}
+            {business.name} — Portland, OR
           </div>
           <div
             style={{
-              fontSize: 52,
-              fontWeight: "bold",
-              lineHeight: 1.15,
-              marginBottom: 28,
+              fontFamily: "serif",
+              fontSize: 68,
+              fontStyle: "italic",
+              lineHeight: 1.05,
+              letterSpacing: "-0.01em",
               color: ink,
+              display: "flex",
             }}
           >
             {business.tagline}
           </div>
-          <div style={{ fontSize: 22, color: inkMuted, display: "flex" }}>
-            {new URL(business.url).hostname}
+          <div
+            style={{
+              fontFamily: "monospace",
+              fontSize: 20,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: inkMuted,
+              display: "flex",
+            }}
+          >
+            ● {new URL(business.url).hostname}
           </div>
         </div>
       </div>

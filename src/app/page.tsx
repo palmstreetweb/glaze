@@ -1,37 +1,24 @@
-import React from "react";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Gallery from "@/components/Gallery";
-import CTA from "@/components/CTA";
-import FAQ from "@/components/FAQ";
+import Shelf from "@/components/Shelf";
+import Process from "@/components/Process";
+import Studio from "@/components/Studio";
+import Journal from "@/components/Journal";
+import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
-      {/* Navigation */}
       <Nav />
-
-      {/* Main Sections */}
       <main className="flex-grow">
-        {/* Hero Banner */}
         <Hero />
-
-        {/* Brand Information Section */}
-        <About />
-
-        {/* Cards Gallery Grid */}
-        <Gallery />
-
-        {/* Full-width Call to Action Band */}
-        <CTA />
-
-        {/* Accordion FAQ Section */}
-        <FAQ />
+        <Shelf />
+        <Process />
+        <Studio />
+        <Journal />
+        <Newsletter />
       </main>
-
-      {/* Footer Block */}
       <Footer />
     </>
   );

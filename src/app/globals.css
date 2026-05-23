@@ -3,28 +3,38 @@
 @theme {
   --font-sans: var(--font-sans), sans-serif;
   --font-serif: var(--font-serif), serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
 
   --color-bg: var(--bg);
-  --color-bg-section: var(--bg-section);
+  --color-bg-warm: var(--bg-warm);
+  --color-bg-deep: var(--bg-deep);
   --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-clay: var(--clay);
+  --color-cream: var(--cream);
+  --color-oat: var(--oat);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
   --color-on-accent: var(--on-accent);
 }
 
 :root {
-  /* Default Neutral Theme: Clean Light mode */
-  --bg: #FFFFFF;
-  --bg-section: #F3F4F6;
-  --accent: #2563EB; /* Royal Blue */
-  --accent-hover: #1D4ED8;
-  --ink: #111827; /* Dark slate */
-  --ink-muted: #4B5563;
-  --on-accent: #FFFFFF;
+  /* GLAZE — clay & cream */
+  --bg: #FBEFE1;
+  --bg-warm: #F2E1CC;
+  --bg-deep: #3E2A20;
+  --accent: #C97B5A;
+  --accent-soft: #E5A98B;
+  --clay: #8C5A41;
+  --cream: #FFF6EE;
+  --oat: #D9C0A3;
+  --ink: #3E2A20;
+  --ink-muted: #7D6655;
+  --ink-faint: #B59E89;
+  --on-accent: #FFF6EE;
 }
 
-/* Base resets & styles */
 html {
   scroll-behavior: smooth;
   height: 100%;
@@ -33,7 +43,7 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-ink);
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
@@ -41,35 +51,39 @@ body {
   flex-direction: column;
 }
 
-/* Custom focus ring for accessibility compliance */
 *:focus-visible {
   outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
-/* Custom selection styling */
 ::selection {
   background-color: var(--color-accent);
   color: var(--color-on-accent);
 }
 
-/* Entry animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Organic blob shapes */
+.blob-1 {
+  border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+}
+.blob-2 {
+  border-radius: 45% 55% 60% 40% / 60% 40% 60% 40%;
+}
+.blob-3 {
+  border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+/* Wavy underline */
+.underline-wavy {
+  text-decoration: underline wavy var(--color-accent);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
 }
 
-/* Reduced motion settings */
+/* Hand-drawn rule (svg in inline filter) */
+.deckle {
+  --deckle-color: var(--color-ink);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

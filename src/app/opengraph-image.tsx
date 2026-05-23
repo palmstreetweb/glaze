@@ -1,115 +1,128 @@
 import { ImageResponse } from "next/og";
 import { business } from "@/lib/business";
 
-export const alt = business.name;
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
+export const alt = `${business.name} — ${business.tagline}`;
+export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-  const { accent, bg, ink, inkMuted } = business.brand;
+  const { accent, bg, ink, inkMuted, onAccent } = business.brand;
 
   return new ImageResponse(
     (
       <div
         style={{
-          background: bg,
           width: "100%",
           height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          padding: "80px",
+          background: bg,
           color: ink,
           fontFamily: "sans-serif",
+          display: "flex",
+          padding: 64,
           position: "relative",
+          overflow: "hidden",
         }}
       >
+        {/* Floating blobs */}
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "16px",
-            background: accent,
+            top: -160,
+            right: -160,
+            width: 540,
+            height: 540,
+            background: "#E5A98B",
+            opacity: 0.55,
+            borderRadius: "45% 55% 60% 40% / 60% 40% 60% 40%",
+            display: "flex",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: -160,
+            left: -120,
+            width: 460,
+            height: 460,
+            background: "#D9C0A3",
+            opacity: 0.6,
+            borderRadius: "70% 30% 50% 50% / 40% 60% 40% 60%",
+            display: "flex",
           }}
         />
 
-        <div
-          style={{
-            fontSize: 40,
-            fontWeight: "bold",
-            letterSpacing: "0.1em",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              width: "20px",
-              height: "20px",
-              backgroundColor: accent,
-              borderRadius: "50%",
-              marginRight: "16px",
-            }}
-          />
-          {business.name}
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            maxWidth: "900px",
-            marginTop: "auto",
-            marginBottom: "auto",
-          }}
-        >
-          <div
-            style={{
-              fontSize: 56,
-              fontWeight: "bold",
-              lineHeight: 1.2,
-              marginBottom: "24px",
-              color: ink,
-            }}
-          >
-            {business.tagline}
+        <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: 1, justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+            <div
+              style={{
+                width: 80,
+                height: 80,
+                background: accent,
+                borderRadius: "60% 40% 55% 45% / 50% 60% 40% 50%",
+                color: onAccent,
+                fontFamily: "serif",
+                fontSize: 56,
+                fontStyle: "italic",
+                fontWeight: 700,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              g
+            </div>
+            <div
+              style={{
+                fontFamily: "serif",
+                fontSize: 56,
+                fontStyle: "italic",
+                color: ink,
+                display: "flex",
+              }}
+            >
+              {business.name.toLowerCase()}
+            </div>
           </div>
+
           <div
             style={{
-              fontSize: 22,
-              color: inkMuted,
+              fontFamily: "serif",
+              fontSize: 96,
+              lineHeight: 1.0,
+              letterSpacing: "-0.02em",
+              color: ink,
+              maxWidth: 980,
               display: "flex",
-              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 18,
             }}
           >
-            <span>{business.email}</span>
-            <span style={{ margin: "0 12px" }}>•</span>
+            <span>Soft objects</span>
+            <span style={{ fontStyle: "italic", color: accent, display: "flex" }}>
+              for the slow kitchen.
+            </span>
+          </div>
+
+          <div
+            style={{
+              borderTop: `1px solid ${ink}33`,
+              paddingTop: 18,
+              display: "flex",
+              justifyContent: "space-between",
+              fontFamily: "monospace",
+              fontSize: 18,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: inkMuted,
+            }}
+          >
+            <span>Portland, Oregon</span>
+            <span style={{ color: accent }}>Fired weekly · Est. 2019</span>
             <span>{new URL(business.url).hostname}</span>
           </div>
         </div>
-
-        <div
-          style={{
-            position: "absolute",
-            bottom: "80px",
-            right: "80px",
-            width: "48px",
-            height: "48px",
-            borderRadius: "50%",
-            border: `8px solid ${accent}`,
-          }}
-        />
       </div>
     ),
-    {
-      ...size,
-    }
+    { ...size }
   );
 }

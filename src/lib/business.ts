@@ -5,15 +5,10 @@ export interface SocialLink {
 }
 
 export interface BrandPalette {
-  /** Primary brand color used for icon backgrounds and OG accents */
   accent: string;
-  /** Foreground text/glyph color on the brand background */
   onAccent: string;
-  /** Page background for OG cards */
   bg: string;
-  /** Primary text on OG cards */
   ink: string;
-  /** Secondary text on OG cards */
   inkMuted: string;
 }
 
@@ -29,22 +24,22 @@ export interface BusinessDetails {
 }
 
 export const business: BusinessDetails = {
-  name: "STARTER CO",
-  tagline: "Build templates faster with our clean agnostic starter.",
-  email: "hello@starter.palmstreetweb.design",
-  phone: "(555) 123-4567",
-  address: "123 Palm Street, Suite 100, San Francisco, CA 94107",
-  url: "https://starter.palmstreetweb.design",
+  name: "GLAZE",
+  tagline: "A small ceramics studio. Soft objects for the slow kitchen.",
+  email: "hello@glaze.palmstreetweb.design",
+  phone: "(503) 555-0118",
+  address: "1147 SE Division Street, Portland, OR 97202",
+  url: "https://glaze.palmstreetweb.design",
   socials: [
-    { name: "Instagram", href: "https://instagram.com/starter" },
-    { name: "LinkedIn", href: "https://linkedin.com/company/starter" },
-    { name: "X", href: "https://x.com/starter" },
+    { name: "Instagram", href: "https://instagram.com/glaze.studio" },
+    { name: "Etsy", href: "https://etsy.com/shop/glaze" },
+    { name: "Newsletter", href: "#newsletter" },
   ],
   brand: {
-    accent: "#2563EB",
-    onAccent: "#FFFFFF",
-    bg: "#FFFFFF",
-    ink: "#111827",
-    inkMuted: "#4B5563",
+    accent: "#C97B5A",
+    onAccent: "#FFF6EE",
+    bg: "#FBEFE1",
+    ink: "#3E2A20",
+    inkMuted: "#7D6655",
   },
 };
